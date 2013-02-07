@@ -1,0 +1,26 @@
+<idea-plugin version="2" url="https://github.com/Ladicek/intellifrog">
+    <id>cz.ladicek.intellifrog</id>
+    <version>0.1-dev</version>
+    <vendor email="ladicek@gmail.com" url="http://ladicek.github.com/">Ladislav Thon</vendor>
+    <idea-version since-build="123.72"/>
+    <depends>com.intellij.modules.lang</depends>
+
+    <name>IntelliFrog</name>
+    <description>SmartFrog Plugin for IntelliJ IDEA</description>
+    <change-notes/>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileTypeFactory implementation="cz.ladicek.intellifrog.FrogFileTypeFactory"/>
+        <lang.parserDefinition language="Frog" implementationClass="cz.ladicek.intellifrog.parser.FrogParserDefinition"/>
+        <lang.braceMatcher language="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogBraceMatcher"/>
+        <lang.commenter language="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogCommenter"/>
+        <lang.syntaxHighlighterFactory key="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogSyntaxHighlighterFactory"/>
+    </extensions>
+
+    <actions>
+        <action id="Frog.NewCalcFile" class="cz.ladicek.intellifrog.actions.CreateFrogFileAction"
+                text="SmartFrog File" description="Create new SmartFrog file">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFile"/>
+        </action>
+    </actions>
+</idea-plugin>

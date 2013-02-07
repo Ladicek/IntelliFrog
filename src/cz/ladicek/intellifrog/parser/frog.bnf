@@ -1,0 +1,200 @@
+{
+  parserClass = "cz.ladicek.intellifrog.parser.FrogParser"
+  parserUtilClass = "cz.ladicek.intellifrog.parser.GeneratedParserUtilBase"
+
+  implements = "cz.ladicek.intellifrog.psi.FrogElement"
+  extends = "cz.ladicek.intellifrog.psi.impl.FrogElementImpl"
+
+  elementTypeHolderClass = "cz.ladicek.intellifrog.parser.FrogTypes"
+  elementTypePrefix = "FROG_"
+  elementTypeClass = "cz.ladicek.intellifrog.psi.FrogElementType"
+  tokenTypeClass = "cz.ladicek.intellifrog.psi.FrogTokenType"
+
+  psiClassPrefix = "Frog"
+  psiImplClassSuffix = "Impl"
+  psiPackage = "cz.ladicek.intellifrog.psi"
+  psiImplPackage = "cz.ladicek.intellifrog.psi.impl"
+  psiImplUtilClass="cz.ladicek.intellifrog.psi.impl.FrogPsiImplUtil"
+
+  APPLY               = "APPLY"
+  ASSERT              = "ASSERT"
+  ATTRIB              = "ATTRIB"
+  CONSTANT            = "CONSTANT"
+  DATA                = "DATA"
+  HERE                = "HERE"
+  HOST                = "HOST"
+  LAZY                = "LAZY"
+  NULL                = "NULL"
+  OPTIONAL            = "OPTIONAL"
+  PARENT              = "PARENT"
+  PROCESS             = "PROCESS"
+  PROPERTY            = "PROPERTY"
+  IPROPERTY           = "IPROPERTY"
+  ENVPROPERTY         = "ENVPROPERTY"
+  IENVPROPERTY        = "IENVPROPERTY"
+  ROOT                = "ROOT"
+  TBD                 = "TBD"
+  THIS                = "THIS"
+  VAR                 = "VAR"
+
+  IF                  = "IF"
+  THEN                = "THEN"
+  ELSE                = "ELSE"
+  FI                  = "FI"
+  SWITCH              = "SWITCH"
+  END_SWITCH          = "ENDSWITCH"
+
+  CODEBASE            = "#codebase"
+  EXTENDS             = "extends"
+  FALSE               = "false"
+  INCLUDE             = "#include"
+  INCLUDE_OPTIONALLY  = "#include?"
+  TRUE                = "true"
+
+  COMMA               = ","
+  REFERENCE_SEPARATOR = ":"
+  SEMICOLON           = ";"
+
+  LEFT_PAREN          = "("
+  RIGHT_PAREN         = ")"
+  LEFT_BRACE          = "{"
+  RIGHT_BRACE         = "}"
+  LEFT_BRACKET        = "["
+  RIGHT_BRACKET       = "]"
+  START_VECTOR        = "[|"
+  END_VECTOR          = "|]"
+
+  UNIQUE              = "--"
+
+  OP_ADD              = "+"
+  OP_SUB              = "-"
+  OP_MUL              = "*"
+  OP_DIV              = "/"
+  OP_MOD              = "%"
+  OP_CONCAT           = "++"
+  OP_APPEND           = "<>"
+
+  OP_EQ               = "=="
+  OP_NE               = "!="
+  OP_GE               = ">="
+  OP_LE               = "<="
+  OP_GT               = ">"
+  OP_LT               = "<"
+
+  OP_AND              = "&&"
+  OP_OR               = "||"
+  OP_XOR              = "x|"
+  OP_NOT              = "!"
+  OP_IMPLIES          = "->"
+}
+
+root ::= attribute_list
+
+attribute_list ::= ( includes | attribute | ';' )* { recoverUntil = attribute_list_recover }
+
+private attribute_list_recover ::= !'}'
+
+includes ::= ('#codebase' string)? ('#include' | '#include?') string
+
+attribute ::= ('[' tags ']')? attr_name attr_value
+
+tags ::= simple_name (','? simple_name)*
+
+attr_name ::= '--'
+  | string
+  | word (':' attr_name)?
+
+attr_value ::= component
+  | simple_value /*';'*/
+  | ';'
+
+// the (':' word)? part is undocumented
+component ::= 'extends' (':' word)? ('DATA' | 'LAZY')? ('NULL' | link_reference | component_attributes) component_rest? { pin = 1 }
+
+component_attributes ::= '{' attribute_list '}'
+
+component_rest ::= (',' ('NULL' | link_reference | component_attributes ) )+
+  | component_attributes
+
+link_reference ::= reference_part (':' reference_part)*
+
+simple_value ::= component_reference
+  | parenthesised_simple_value
+  | if_then_else
+  | switch_stmt
+  | basic
+  { recoverUntil = simple_value_recover }
+
+private simple_value_recover ::= !(','|';'|'}'|')'|']'|'THEN'|'ELSE'|'FI'|'ENDSWITCH'|binary_op|nary_op)
+
+parenthesised_simple_value ::= '(' (component | operator) ')' { pin = 1 }
+
+component_reference ::= 'LAZY'? component_reference_base
+
+component_reference_base ::= ('OPTIONAL' ( '(' primitive ')' )? )? link_reference
+  | 'APPLY' component_attributes
+  | 'ASSERT' component_attributes
+
+operator ::= unary_op simple_value
+  | simple_value binary_op simple_value
+  | simple_value (nary_op simple_value)+
+
+unary_op ::= '!'
+
+binary_op ::= '==' | '!=' | '>=' | '<=' | '>' | '<' | '-' | '/' | '%'
+
+nary_op ::= '++' | '<>' | '+' | '*' | '&&' | '||' | 'x|' | '->'
+
+if_then_else ::= 'IF' simple_value 'THEN' simple_value 'ELSE' simple_value 'FI' { pin = 1 }
+
+switch_stmt ::= 'SWITCH' ('{' attribute_list '}')? case_list 'ENDSWITCH' { pin = 1 }
+
+case_list ::= ('IF' simple_value 'THEN' simple_value)+
+
+reference_part ::= 'ROOT'
+  | 'PARENT'
+  | 'ATTRIB' simple_name
+  | 'HERE' simple_name
+  | 'THIS'
+  | 'PROPERTY' simple_name
+  | 'IPROPERTY' simple_name
+  | 'ENVPROPERTY' simple_name
+  | 'IENVPROPERTY' simple_name
+  | 'CONSTANT' simple_name
+  | 'HOST' simple_name
+  | 'PROCESS'
+  | word
+
+basic ::= primitive
+  | vector
+
+primitive ::= 'NULL'
+  | string
+  | number
+  | bool
+  | byte_array
+  | primitive_vector
+  | 'DATA' component_reference_base
+  | 'TBD'
+  | var_decl
+
+vector ::= '[' simple_value (',' simple_value)* ']' { pin = 1 }
+
+primitive_vector ::= '[|' primitive (',' primitive)* '|]' { pin = 1 }
+
+number ::= integer
+  | long
+  | float
+  | double
+
+string ::= simple_string
+  | multiline_string
+
+bool ::= 'true'
+  | 'false'
+
+simple_name ::= simple_string
+  | multiline_string
+  | word
+
+var_decl ::= 'VAR' (component_reference | string | '{' (component_reference | string) ',' (string | number) '}' ) { pin = 1 }

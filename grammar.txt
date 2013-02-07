@@ -1,0 +1,506 @@
+/* WHITE SPACE */
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+| "\f"
+}
+
+/* COMMENTS */
+
+MORE :
+{
+  "//" : IN_SINGLE_LINE_COMMENT
+| <"/**" ~["/"]> { input_stream.backup(1); } : IN_FORMAL_COMMENT
+| "/*" : IN_MULTI_LINE_COMMENT
+}
+
+<IN_SINGLE_LINE_COMMENT>
+SPECIAL_TOKEN :
+{
+  <( ~[ "\n" , "\r" ] )* > : DEFAULT
+}
+
+<IN_FORMAL_COMMENT>
+SPECIAL_TOKEN :
+{
+  <FORMAL_COMMENT: "*/" > : DEFAULT
+}
+
+<IN_MULTI_LINE_COMMENT>
+SPECIAL_TOKEN :
+{
+  <MULTI_LINE_COMMENT: "*/" > : DEFAULT
+}
+
+<IN_FORMAL_COMMENT,IN_MULTI_LINE_COMMENT>
+MORE :
+{
+  < ~[] >
+}
+
+/**
+ * if you change this, dont forget to update the reference documentation
+ */
+TOKEN : /* reserved words */
+{
+   <APPLY: "APPLY">
+ | <ASSERT: "ASSERT">
+ | <ATTRIB: "ATTRIB">
+ | <CODEBASE: "#codebase">
+ | <COMMA: ",">
+ | <DATA: "DATA">
+ | <EXTENDS: "extends">
+ | <FALSE: "false">
+ | <HERE: "HERE">
+ | <HOST: "HOST">
+ | <INCLUDE: "#include">
+ | <INCLUDEOPTIONALLY: "#include?">
+ | <PROPERTY: "PROPERTY">
+ | <IPROPERTY: "IPROPERTY">
+ | <ENVPROPERTY: "ENVPROPERTY">
+ | <IENVPROPERTY: "IENVPROPERTY">
+ | <CONST: "CONSTANT">
+ | <LAZY: "LAZY">
+ | <LBRACE: "{">
+ | <LBRACKET: "[">
+ | <NULL: "NULL">
+ | <OPTIONAL: "OPTIONAL">
+ | <PARENT: "PARENT">
+ | <PROCESS: "PROCESS">
+ | <RBRACE: "}">
+ | <RBRACKET: "]">
+ | <REFPARTSEP: ":">
+ | <ROOT: "ROOT">
+ | <SEMICOLON: ";">
+ | <TBD: "TBD">
+ | <THIS: "THIS">
+ | <TRUE: "true">
+ | <VECTOREND: "|]" >
+ | <VECTORSTART: "[|">
+ | <UNIQUE: "--">
+
+ | <OPSTART: "(">
+ | <OPEND: ")">
+
+ | <SUM: "+">
+ | <MINUS: "-">
+ | <TIMES: "*">
+ | <DIV: "/">
+ | <MOD: "%">
+ | <CONCAT: "++">
+ | <APPEND: "<>">
+
+ | <EQ: "==">
+ | <NE: "!=">
+ | <GE: ">=">
+ | <LE: "<=">
+ | <GT: ">">
+ | <LT: "<">
+
+ | <AND: "&&">
+ | <OR: "||">
+ | <XOR: "x|">
+ | <NOT: "!">
+ | <IMPLIES: "->">
+
+ | <IF: "IF">
+ | <THEN: "THEN">
+ | <ELSE: "ELSE">
+ | <FI: "FI">
+ | <SWITCH: "SWITCH">
+ | <ENDSWITCH: "ENDSWITCH">
+ | <VAR: "VAR">
+}
+
+TOKEN :
+{
+  < WORD: (<LETTER> (<LETTER>|<DIGIT>|<SPECIAL>)*) >
+| < #SPECIAL: [".", "_", "-", "+", "@", "#", "~", "$", "%", "^", "&"] >
+| < #LETTER:
+      [
+       "\u0024",
+       "\u0041"-"\u005a",
+       "\u005f",
+       "\u0061"-"\u007a",
+       "\u00A2"-"\u00A5",
+       "\u00AA"-"\u00AA",
+       "\u00B5"-"\u00B5",
+       "\u00BA"-"\u00BA",
+       "\u00c0"-"\u00d6",
+       "\u00d8"-"\u00f6",
+       "\u00f8"-"\u00ff"
+      ]
+  >
+|
+  < #DIGIT:
+      [
+       "\u0030"-"\u0039"
+      ]
+  >
+}
+
+
+TOKEN : /* Literals */
+{
+      <STRING:
+      ("\"" (
+          (~["\"","\\","\n","\r"])
+          | ("\\"
+              ( ["n","t","b","r","f","\\","'","\""]
+              | ["0"-"3"] ["0"-"7"] ["0"-"7"]
+              )
+            )
+        )* "\"")
+      >
+    | <MULTILINESTRING: ("##" (
+          (~["#","\\"])
+          | ("\\"
+              ( ["n","t","b","r","f","\\","'","#"]
+              | ["0"-"3"] ["0"-"7"] ["0"-"7"]
+              )
+            )
+        )* "#")
+      >
+    | <INTEGER: (("-")? ["0"-"9"] (["0"-"9"])*)
+        | "0" >
+    | <#FLOAT_BASE:
+        ("-")?
+        (
+          (["0"-"9"])+ "." (["0"-"9"])* (<EXPONENT>)?
+        | "." (["0"-"9"])+ (<EXPONENT>)?
+        | (["0"-"9"])+ <EXPONENT>
+        | (["0"-"9"])+ (<EXPONENT>)?
+        )
+      >
+    | < #EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+ >
+    | <DOUBLE:
+        <FLOAT_BASE> ["d", "D"]
+      >
+    | <LONG:
+        <INTEGER> ["l", "L"]
+      >
+    | <FLOAT:
+        <FLOAT_BASE> (["f", "F"])?
+      >
+    | <BYTEARRAY:
+          (("#HEX#")
+           (["0"-"9", "a"-"f", "A"-"F", " ", "\n", "\t"])*
+           ("#"))
+          |(("#DEC#")
+           (["0"-"9", " ", "\n", "\t"])*
+           ("#"))
+          |(("#OCT#")
+           (["0"-"7", " ", "\n", "\t"])*
+           ("#"))
+          |(("#BIN#")
+           (["0"-"1", " ", "\n", "\t"])*
+           ("#"))
+          |(("#B64#")
+           (["0"-"9", "a"-"f", "A"-"F", "=", "+", "/", " ", "\n", "\t"])*
+           ("#"))
+       >
+}
+
+
+/*
+ * Main body of grammar
+ */
+void AttributesNoEOF(SFComponentDescription descr) :
+{
+  attrs = AttributeListNoEOF()
+}
+
+
+Vector AttributeListNoEOF() :
+{
+    ( c = Attribute()
+    | Includes(res)
+    | <SEMICOLON>
+    )*
+}
+
+void Includes(Vector res) :
+{
+( [<CODEBASE> codebase = String() ] (<INCLUDE> | <INCLUDEOPTIONALLY>)  fName = String() )
+}
+
+Object[] Attribute() :
+{
+  ([ <LBRACKET> Tags(tags) <RBRACKET> ] AttrName(name) attribute[1]=Value() )
+}
+
+void Tags(Set tags) :
+{
+    [t=Name()
+      [<COMMA>] Tags(tags)
+    ]  
+}
+
+
+void AttrName(SFReference res) :
+{
+     (<UNIQUE>
+     )
+    | (
+        (t = <STRING> )
+      )
+    |
+     (
+       (t=<WORD> )
+       [(<REFPARTSEP> AttrName(res))]
+     )
+}
+
+
+
+
+
+
+Object Value() :
+{
+    (
+    res=Component()
+    | res=SimpleValue() //<SEMICOLON>
+    | <SEMICOLON>
+    )
+}
+
+
+Object Var() :
+{ 
+    <VAR> 
+    (
+      (
+        (ran = ReferenceNoEOF() | ran = String())
+        |
+        (<LBRACE> (ran = ReferenceNoEOF() | ran = String()) <COMMA> (val = String() | val = Number()) <RBRACE>)
+      )
+	|
+	)
+}
+
+Object SimpleValue() :
+{
+    (
+    res=ReferenceNoEOF()
+    | res=Basic()
+    | (<OPSTART> (res = Component() | res = Operator()) <OPEND>)
+    | res = IfThenElse()
+    | res = Switch()
+    )
+}
+
+
+Object Operator() :
+{
+    ((<NOT> a = SimpleValue() )
+     |
+     (a = SimpleValue() ) [
+     (
+      ((<APPEND> ) (b = SimpleValue() ) (<APPEND> (b = SimpleValue() ))*)
+         |((<CONCAT> ) (b = SimpleValue() ) (<CONCAT> (b = SimpleValue() ))*)
+         |((<SUM> ) (b = SimpleValue() ) (<SUM> (b = SimpleValue() ))*)
+         |((<TIMES> ) (b = SimpleValue() ) (<TIMES> (b = SimpleValue() ))*)
+         |((<AND> ) (b = SimpleValue() ) (<AND> (b = SimpleValue() ))*)
+         |((<OR> ) (b = SimpleValue() ) (<OR> (b = SimpleValue() ))*)
+         |((<XOR> ) (b = SimpleValue() ) (<XOR> (b = SimpleValue() ))*)
+         |((<IMPLIES> ) (b = SimpleValue() ) (<IMPLIES> (b = SimpleValue() ))*)
+         
+     |((<EQ> ) (b = SimpleValue()))
+     |((<NE> ) (b = SimpleValue()))
+     |((<GE> ) (b = SimpleValue()))
+     |((<LE> ) (b = SimpleValue()))
+     |((<GT> ) (b = SimpleValue()))
+     |((<LT> ) (b = SimpleValue()))
+     |((<MINUS> ) (b = SimpleValue()))
+     |((<DIV> ) (b = SimpleValue()))
+     |((<MOD> ) (b = SimpleValue()))
+     
+     )
+      ]
+    )
+}
+
+
+Object IfThenElse() :
+{
+    <IF> i = SimpleValue() <THEN> t = SimpleValue() <ELSE> e = SimpleValue() <FI>
+}
+
+Object Switch() :
+{
+    <SWITCH> [<LBRACE> AttributesNoEOF(bindings) <RBRACE>]
+              CaseList(bindings)
+    <ENDSWITCH>
+}
+
+void CaseList(SFComponentDescription cases) :
+{
+   <IF> i = SimpleValue() <THEN> t = SimpleValue() [CaseList(cases)]
+}
+
+//
+// Note that the Component() term may include a different node type builder.
+// This is used as follows:
+//
+//   foo extends:someClass etc...
+//
+// Where the default is "default". This is used by the
+// component factory to map to a class to represent that node. This is
+// SFComponentDescriptionImpl in the default factory.
+// This is not documented anywhere (deliberately) and maybe should
+// be removed... (IT has been useful in some special uses of the language
+// outside of SmartFrog).
+//
+SFComponentDescription Component() :
+{
+  <EXTENDS> [ <REFPARTSEP> id=<WORD>  ] component=ComponentType(componentClass)
+}
+
+SFComponentDescription ComponentType(String componentClass) :
+{
+  (EagerComponent(component)|DataComponent(component))
+}
+
+void EagerComponent(SFComponentDescription comp) :
+{
+  BaseComponent(comp)
+}
+
+void DataComponent(SFComponentDescription comp) :
+{
+  (<DATA> | <LAZY>) BaseComponent(comp)
+}
+
+
+void BaseComponent(SFComponentDescription comp) :
+{ 
+  (
+    (<NULL> [BaseComponentRest(comp)])
+  | (BaseComponentLinkType(comp) [BaseComponentRest(comp)])
+  | (BaseComponentAttributesType(comp) [BaseComponentRest(comp)])
+  )
+}
+
+
+void BaseComponentRest(SFComponentDescription comp) :
+{
+    (<COMMA>  (BaseComponentLinkType(comp)|BaseComponentAttributesType(comp)|<NULL>) [BaseComponentRest(comp)])
+    | (BaseComponentAttributesType(comp)) // for backward compat...
+}
+
+void BaseComponentLinkType(SFComponentDescription comp) :
+{
+   prototype = LinkReference()
+}
+
+void BaseComponentAttributesType (SFComponentDescription comp) :
+{
+   <LBRACE> AttributesNoEOF(compType) <RBRACE>
+}
+
+
+SFReference ReferenceNoEOF() :
+{
+  [<LAZY> ]  res = BaseReference()
+}
+
+SFReference BaseReference() :
+{
+  (
+    ([<OPTIONAL> [<OPSTART> defaultValue = Primitive() ")"] ] ref = LinkReference() )
+  |
+    (<APPLY> <LBRACE>  AttributesNoEOF(comp) <RBRACE> )
+  |
+    (<ASSERT> <LBRACE>  AttributesNoEOF(comp) <RBRACE> )
+  )
+}
+
+SFReference LinkReference() :
+{
+   ReferencePart(ref) (<REFPARTSEP> ReferencePart(ref))*
+}
+
+void ReferencePart(SFReference ref) :
+{
+    (<ROOT> )
+  | (<PARENT> )
+  | (<ATTRIB> id=Name() )
+  | (<HERE> id=Name() )
+  | (<THIS> )
+  | (<PROPERTY> id=Name() )
+  | (<IPROPERTY> id=Name() )
+  | (<ENVPROPERTY> id=Name() )
+  | (<IENVPROPERTY> id=Name() )
+  | (<CONST> id=Name() )
+  | (<HOST> (id=Name() ))
+  | (<PROCESS> )
+  | (id=<WORD> )
+}
+
+
+Object Basic() :
+{
+  (
+     (res=Primitive())
+   | (<LBRACKET>  [tmp=SimpleValue()  (<COMMA> tmp=SimpleValue() )*] <RBRACKET> )
+  )
+}
+
+Object Primitive() :
+{
+  (
+   (<NULL>)
+   | (res=String())
+   | (res=Number())
+   | (res=Boolean())
+   | (res=ByteArray())
+   | (<VECTORSTART>  [tmp=Primitive()  (<COMMA> tmp=Primitive() )*] <VECTOREND>)
+   | <DATA> res = BaseReference()
+   | <TBD>
+   | res=Var()
+  )
+}
+
+
+
+Number Number() :
+{
+  (
+    res=<DOUBLE >
+  | res=<FLOAT>
+  | res=<INTEGER>
+  | res=<LONG>
+  )
+}
+
+String String() :
+{
+  (  ( res=<STRING> )
+   | ( res=<MULTILINESTRING> )
+  )
+}
+
+Boolean Boolean() :
+{
+  (  res = <TRUE>
+   | res = <FALSE>
+  )
+}
+
+SFByteArray ByteArray() :
+{
+  (  ( res=<BYTEARRAY> ) )
+}
+
+Token Name() :
+{
+  ( res = <STRING>
+  | res = <MULTILINESTRING>
+  | res = <WORD>
+  )
+}
