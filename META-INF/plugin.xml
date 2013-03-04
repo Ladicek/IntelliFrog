@@ -7,7 +7,20 @@
 
     <name>IntelliFrog</name>
     <description>SmartFrog Plugin for IntelliJ IDEA</description>
-    <change-notes/>
+    <change-notes>
+        <![CDATA[
+            <p>0.1</p>
+
+            <ul>
+            <li>SmartFrog parsing with reasonable error recovery</li>
+            <li>syntax highlighting</li>
+            <li>brace matching</li>
+            <li>commenting</li>
+            <li>creating new .sf files</li>
+            <li>keyword completion</li>
+            </ul>
+        ]]>
+    </change-notes>
 
     <extensions defaultExtensionNs="com.intellij">
         <fileTypeFactory implementation="cz.ladicek.intellifrog.FrogFileTypeFactory"/>
