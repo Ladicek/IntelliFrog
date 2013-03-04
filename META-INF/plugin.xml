@@ -15,6 +15,7 @@
         <lang.braceMatcher language="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogBraceMatcher"/>
         <lang.commenter language="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogCommenter"/>
         <lang.syntaxHighlighterFactory key="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogSyntaxHighlighterFactory"/>
+        <completion.contributor language="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogKeywordsCompletionContributor"/>
     </extensions>
 
     <actions>
