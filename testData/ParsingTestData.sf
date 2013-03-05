@@ -1,0 +1,30 @@
+#include "org/smartfrog/functions.sf";
+myString extends formatString {
+    format "the path is $1";
+    -- ENVPROPERTY PATH;
+}
+
+test.timeout 1000;
+test-server "lucky";
+test-server2 "unlucky";
+listen@port 46;
+user+name+unknown true;
+
+actions extends Compound {
+    -- extends Server { port 4040; }
+    -- extends Server { port 4041; }
+    -- extends Server { port 4042; }
+
+    foo IF (val1 > val2) THEN (val1 - val2) ELSE (val2 - val1) FI;
+    bar [|"A", "b"|];
+    baz 1;
+}
+
+sfConfig extends Prim {
+    portNum 4047;
+    sfProcessHost "ahost.smartfrog.org";
+    administrators ["patrick", ROOT:sysadmin];
+    remotePath HOST "192.168.2.2" : ENVPROPERTY path;
+    timeout OPTIONAL(1000) IPROPERTY test.timeout;
+    logger LAZY ROOT:sfConfig:server:logger;
+}

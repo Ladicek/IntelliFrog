@@ -1,0 +1,544 @@
+FROG_FILE
+  FROG_ATTRIBUTE_LIST
+    FROG_INCLUDES
+      PsiElement(#include)('#include')
+      PsiWhiteSpace(' ')
+      FROG_STRING
+        PsiElement(simple_string)('"org/smartfrog/functions.sf"')
+    PsiElement(;)(';')
+    PsiWhiteSpace('\n')
+    FROG_ATTRIBUTE
+      FROG_ATTR_NAME
+        PsiElement(word)('myString')
+      PsiWhiteSpace(' ')
+      FROG_ATTR_VALUE
+        FROG_COMPONENT
+          PsiElement(extends)('extends')
+          PsiWhiteSpace(' ')
+          FROG_LINK_REFERENCE
+            FROG_REFERENCE_PART
+              PsiElement(word)('formatString')
+          PsiWhiteSpace(' ')
+          FROG_COMPONENT_REST
+            FROG_COMPONENT_ATTRIBUTES
+              PsiElement({)('{')
+              PsiWhiteSpace('\n')
+              PsiWhiteSpace(' ')
+              PsiWhiteSpace(' ')
+              PsiWhiteSpace(' ')
+              PsiWhiteSpace(' ')
+              FROG_ATTRIBUTE_LIST
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(word)('format')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_BASIC
+                        FROG_PRIMITIVE
+                          FROG_STRING
+                            PsiElement(simple_string)('"the path is $1"')
+                PsiElement(;)(';')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(--)('--')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_COMPONENT_REFERENCE
+                        FROG_COMPONENT_REFERENCE_BASE
+                          FROG_LINK_REFERENCE
+                            FROG_REFERENCE_PART
+                              PsiElement(ENVPROPERTY)('ENVPROPERTY')
+                              PsiWhiteSpace(' ')
+                              FROG_SIMPLE_NAME
+                                PsiElement(word)('PATH')
+                PsiElement(;)(';')
+              PsiWhiteSpace('\n')
+              PsiElement(})('}')
+    PsiWhiteSpace('\n')
+    PsiWhiteSpace('\n')
+    FROG_ATTRIBUTE
+      FROG_ATTR_NAME
+        PsiElement(word)('test.timeout')
+      PsiWhiteSpace(' ')
+      FROG_ATTR_VALUE
+        FROG_SIMPLE_VALUE
+          FROG_BASIC
+            FROG_PRIMITIVE
+              FROG_NUMBER
+                PsiElement(integer)('1000')
+    PsiElement(;)(';')
+    PsiWhiteSpace('\n')
+    FROG_ATTRIBUTE
+      FROG_ATTR_NAME
+        PsiElement(word)('test-server')
+      PsiWhiteSpace(' ')
+      FROG_ATTR_VALUE
+        FROG_SIMPLE_VALUE
+          FROG_BASIC
+            FROG_PRIMITIVE
+              FROG_STRING
+                PsiElement(simple_string)('"lucky"')
+    PsiElement(;)(';')
+    PsiWhiteSpace('\n')
+    FROG_ATTRIBUTE
+      FROG_ATTR_NAME
+        PsiElement(word)('test-server2')
+      PsiWhiteSpace(' ')
+      FROG_ATTR_VALUE
+        FROG_SIMPLE_VALUE
+          FROG_BASIC
+            FROG_PRIMITIVE
+              FROG_STRING
+                PsiElement(simple_string)('"unlucky"')
+    PsiElement(;)(';')
+    PsiWhiteSpace('\n')
+    FROG_ATTRIBUTE
+      FROG_ATTR_NAME
+        PsiElement(word)('listen@port')
+      PsiWhiteSpace(' ')
+      FROG_ATTR_VALUE
+        FROG_SIMPLE_VALUE
+          FROG_BASIC
+            FROG_PRIMITIVE
+              FROG_NUMBER
+                PsiElement(integer)('46')
+    PsiElement(;)(';')
+    PsiWhiteSpace('\n')
+    FROG_ATTRIBUTE
+      FROG_ATTR_NAME
+        PsiElement(word)('user+name+unknown')
+      PsiWhiteSpace(' ')
+      FROG_ATTR_VALUE
+        FROG_SIMPLE_VALUE
+          FROG_BASIC
+            FROG_PRIMITIVE
+              FROG_BOOL
+                PsiElement(true)('true')
+    PsiElement(;)(';')
+    PsiWhiteSpace('\n')
+    PsiWhiteSpace('\n')
+    FROG_ATTRIBUTE
+      FROG_ATTR_NAME
+        PsiElement(word)('actions')
+      PsiWhiteSpace(' ')
+      FROG_ATTR_VALUE
+        FROG_COMPONENT
+          PsiElement(extends)('extends')
+          PsiWhiteSpace(' ')
+          FROG_LINK_REFERENCE
+            FROG_REFERENCE_PART
+              PsiElement(word)('Compound')
+          PsiWhiteSpace(' ')
+          FROG_COMPONENT_REST
+            FROG_COMPONENT_ATTRIBUTES
+              PsiElement({)('{')
+              PsiWhiteSpace('\n')
+              PsiWhiteSpace(' ')
+              PsiWhiteSpace(' ')
+              PsiWhiteSpace(' ')
+              PsiWhiteSpace(' ')
+              FROG_ATTRIBUTE_LIST
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(--)('--')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_COMPONENT
+                      PsiElement(extends)('extends')
+                      PsiWhiteSpace(' ')
+                      FROG_LINK_REFERENCE
+                        FROG_REFERENCE_PART
+                          PsiElement(word)('Server')
+                      PsiWhiteSpace(' ')
+                      FROG_COMPONENT_REST
+                        FROG_COMPONENT_ATTRIBUTES
+                          PsiElement({)('{')
+                          PsiWhiteSpace(' ')
+                          FROG_ATTRIBUTE_LIST
+                            FROG_ATTRIBUTE
+                              FROG_ATTR_NAME
+                                PsiElement(word)('port')
+                              PsiWhiteSpace(' ')
+                              FROG_ATTR_VALUE
+                                FROG_SIMPLE_VALUE
+                                  FROG_BASIC
+                                    FROG_PRIMITIVE
+                                      FROG_NUMBER
+                                        PsiElement(integer)('4040')
+                            PsiElement(;)(';')
+                          PsiWhiteSpace(' ')
+                          PsiElement(})('}')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(--)('--')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_COMPONENT
+                      PsiElement(extends)('extends')
+                      PsiWhiteSpace(' ')
+                      FROG_LINK_REFERENCE
+                        FROG_REFERENCE_PART
+                          PsiElement(word)('Server')
+                      PsiWhiteSpace(' ')
+                      FROG_COMPONENT_REST
+                        FROG_COMPONENT_ATTRIBUTES
+                          PsiElement({)('{')
+                          PsiWhiteSpace(' ')
+                          FROG_ATTRIBUTE_LIST
+                            FROG_ATTRIBUTE
+                              FROG_ATTR_NAME
+                                PsiElement(word)('port')
+                              PsiWhiteSpace(' ')
+                              FROG_ATTR_VALUE
+                                FROG_SIMPLE_VALUE
+                                  FROG_BASIC
+                                    FROG_PRIMITIVE
+                                      FROG_NUMBER
+                                        PsiElement(integer)('4041')
+                            PsiElement(;)(';')
+                          PsiWhiteSpace(' ')
+                          PsiElement(})('}')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(--)('--')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_COMPONENT
+                      PsiElement(extends)('extends')
+                      PsiWhiteSpace(' ')
+                      FROG_LINK_REFERENCE
+                        FROG_REFERENCE_PART
+                          PsiElement(word)('Server')
+                      PsiWhiteSpace(' ')
+                      FROG_COMPONENT_REST
+                        FROG_COMPONENT_ATTRIBUTES
+                          PsiElement({)('{')
+                          PsiWhiteSpace(' ')
+                          FROG_ATTRIBUTE_LIST
+                            FROG_ATTRIBUTE
+                              FROG_ATTR_NAME
+                                PsiElement(word)('port')
+                              PsiWhiteSpace(' ')
+                              FROG_ATTR_VALUE
+                                FROG_SIMPLE_VALUE
+                                  FROG_BASIC
+                                    FROG_PRIMITIVE
+                                      FROG_NUMBER
+                                        PsiElement(integer)('4042')
+                            PsiElement(;)(';')
+                          PsiWhiteSpace(' ')
+                          PsiElement(})('}')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(word)('foo')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_IF_THEN_ELSE
+                        PsiElement(IF)('IF')
+                        PsiWhiteSpace(' ')
+                        FROG_SIMPLE_VALUE
+                          FROG_PARENTHESISED_SIMPLE_VALUE
+                            PsiElement(()('(')
+                            FROG_OPERATOR
+                              FROG_SIMPLE_VALUE
+                                FROG_COMPONENT_REFERENCE
+                                  FROG_COMPONENT_REFERENCE_BASE
+                                    FROG_LINK_REFERENCE
+                                      FROG_REFERENCE_PART
+                                        PsiElement(word)('val1')
+                              PsiWhiteSpace(' ')
+                              FROG_BINARY_OP
+                                PsiElement(>)('>')
+                              PsiWhiteSpace(' ')
+                              FROG_SIMPLE_VALUE
+                                FROG_COMPONENT_REFERENCE
+                                  FROG_COMPONENT_REFERENCE_BASE
+                                    FROG_LINK_REFERENCE
+                                      FROG_REFERENCE_PART
+                                        PsiElement(word)('val2')
+                            PsiElement())(')')
+                        PsiWhiteSpace(' ')
+                        PsiElement(THEN)('THEN')
+                        PsiWhiteSpace(' ')
+                        FROG_SIMPLE_VALUE
+                          FROG_PARENTHESISED_SIMPLE_VALUE
+                            PsiElement(()('(')
+                            FROG_OPERATOR
+                              FROG_SIMPLE_VALUE
+                                FROG_COMPONENT_REFERENCE
+                                  FROG_COMPONENT_REFERENCE_BASE
+                                    FROG_LINK_REFERENCE
+                                      FROG_REFERENCE_PART
+                                        PsiElement(word)('val1')
+                              PsiWhiteSpace(' ')
+                              FROG_BINARY_OP
+                                PsiElement(-)('-')
+                              PsiWhiteSpace(' ')
+                              FROG_SIMPLE_VALUE
+                                FROG_COMPONENT_REFERENCE
+                                  FROG_COMPONENT_REFERENCE_BASE
+                                    FROG_LINK_REFERENCE
+                                      FROG_REFERENCE_PART
+                                        PsiElement(word)('val2')
+                            PsiElement())(')')
+                        PsiWhiteSpace(' ')
+                        PsiElement(ELSE)('ELSE')
+                        PsiWhiteSpace(' ')
+                        FROG_SIMPLE_VALUE
+                          FROG_PARENTHESISED_SIMPLE_VALUE
+                            PsiElement(()('(')
+                            FROG_OPERATOR
+                              FROG_SIMPLE_VALUE
+                                FROG_COMPONENT_REFERENCE
+                                  FROG_COMPONENT_REFERENCE_BASE
+                                    FROG_LINK_REFERENCE
+                                      FROG_REFERENCE_PART
+                                        PsiElement(word)('val2')
+                              PsiWhiteSpace(' ')
+                              FROG_BINARY_OP
+                                PsiElement(-)('-')
+                              PsiWhiteSpace(' ')
+                              FROG_SIMPLE_VALUE
+                                FROG_COMPONENT_REFERENCE
+                                  FROG_COMPONENT_REFERENCE_BASE
+                                    FROG_LINK_REFERENCE
+                                      FROG_REFERENCE_PART
+                                        PsiElement(word)('val1')
+                            PsiElement())(')')
+                        PsiWhiteSpace(' ')
+                        PsiElement(FI)('FI')
+                PsiElement(;)(';')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(word)('bar')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_BASIC
+                        FROG_PRIMITIVE
+                          FROG_PRIMITIVE_VECTOR
+                            PsiElement([|)('[|')
+                            FROG_PRIMITIVE
+                              FROG_STRING
+                                PsiElement(simple_string)('"A"')
+                            PsiElement(,)(',')
+                            PsiWhiteSpace(' ')
+                            FROG_PRIMITIVE
+                              FROG_STRING
+                                PsiElement(simple_string)('"b"')
+                            PsiElement(|])('|]')
+                PsiElement(;)(';')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(word)('baz')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_BASIC
+                        FROG_PRIMITIVE
+                          FROG_NUMBER
+                            PsiElement(integer)('1')
+                PsiElement(;)(';')
+              PsiWhiteSpace('\n')
+              PsiElement(})('}')
+    PsiWhiteSpace('\n')
+    PsiWhiteSpace('\n')
+    FROG_ATTRIBUTE
+      FROG_ATTR_NAME
+        PsiElement(word)('sfConfig')
+      PsiWhiteSpace(' ')
+      FROG_ATTR_VALUE
+        FROG_COMPONENT
+          PsiElement(extends)('extends')
+          PsiWhiteSpace(' ')
+          FROG_LINK_REFERENCE
+            FROG_REFERENCE_PART
+              PsiElement(word)('Prim')
+          PsiWhiteSpace(' ')
+          FROG_COMPONENT_REST
+            FROG_COMPONENT_ATTRIBUTES
+              PsiElement({)('{')
+              PsiWhiteSpace('\n')
+              PsiWhiteSpace(' ')
+              PsiWhiteSpace(' ')
+              PsiWhiteSpace(' ')
+              PsiWhiteSpace(' ')
+              FROG_ATTRIBUTE_LIST
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(word)('portNum')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_BASIC
+                        FROG_PRIMITIVE
+                          FROG_NUMBER
+                            PsiElement(integer)('4047')
+                PsiElement(;)(';')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(word)('sfProcessHost')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_BASIC
+                        FROG_PRIMITIVE
+                          FROG_STRING
+                            PsiElement(simple_string)('"ahost.smartfrog.org"')
+                PsiElement(;)(';')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(word)('administrators')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_BASIC
+                        FROG_VECTOR
+                          PsiElement([)('[')
+                          FROG_SIMPLE_VALUE
+                            FROG_BASIC
+                              FROG_PRIMITIVE
+                                FROG_STRING
+                                  PsiElement(simple_string)('"patrick"')
+                          PsiElement(,)(',')
+                          PsiWhiteSpace(' ')
+                          FROG_SIMPLE_VALUE
+                            FROG_COMPONENT_REFERENCE
+                              FROG_COMPONENT_REFERENCE_BASE
+                                FROG_LINK_REFERENCE
+                                  FROG_REFERENCE_PART
+                                    PsiElement(ROOT)('ROOT')
+                                  PsiElement(:)(':')
+                                  FROG_REFERENCE_PART
+                                    PsiElement(word)('sysadmin')
+                          PsiElement(])(']')
+                PsiElement(;)(';')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(word)('remotePath')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_COMPONENT_REFERENCE
+                        FROG_COMPONENT_REFERENCE_BASE
+                          FROG_LINK_REFERENCE
+                            FROG_REFERENCE_PART
+                              PsiElement(HOST)('HOST')
+                              PsiWhiteSpace(' ')
+                              FROG_SIMPLE_NAME
+                                PsiElement(simple_string)('"192.168.2.2"')
+                            PsiWhiteSpace(' ')
+                            PsiElement(:)(':')
+                            PsiWhiteSpace(' ')
+                            FROG_REFERENCE_PART
+                              PsiElement(ENVPROPERTY)('ENVPROPERTY')
+                              PsiWhiteSpace(' ')
+                              FROG_SIMPLE_NAME
+                                PsiElement(word)('path')
+                PsiElement(;)(';')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(word)('timeout')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_COMPONENT_REFERENCE
+                        FROG_COMPONENT_REFERENCE_BASE
+                          PsiElement(OPTIONAL)('OPTIONAL')
+                          PsiElement(()('(')
+                          FROG_PRIMITIVE
+                            FROG_NUMBER
+                              PsiElement(integer)('1000')
+                          PsiElement())(')')
+                          PsiWhiteSpace(' ')
+                          FROG_LINK_REFERENCE
+                            FROG_REFERENCE_PART
+                              PsiElement(IPROPERTY)('IPROPERTY')
+                              PsiWhiteSpace(' ')
+                              FROG_SIMPLE_NAME
+                                PsiElement(word)('test.timeout')
+                PsiElement(;)(';')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(word)('logger')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_COMPONENT_REFERENCE
+                        PsiElement(LAZY)('LAZY')
+                        PsiWhiteSpace(' ')
+                        FROG_COMPONENT_REFERENCE_BASE
+                          FROG_LINK_REFERENCE
+                            FROG_REFERENCE_PART
+                              PsiElement(ROOT)('ROOT')
+                            PsiElement(:)(':')
+                            FROG_REFERENCE_PART
+                              PsiElement(word)('sfConfig')
+                            PsiElement(:)(':')
+                            FROG_REFERENCE_PART
+                              PsiElement(word)('server')
+                            PsiElement(:)(':')
+                            FROG_REFERENCE_PART
+                              PsiElement(word)('logger')
+                PsiElement(;)(';')
+              PsiWhiteSpace('\n')
+              PsiElement(})('}')
