@@ -137,7 +137,7 @@ component_reference_base ::= ('OPTIONAL' ( '(' primitive ')' )? )? link_referenc
 
 operator ::= unary_op simple_value
   | simple_value binary_op simple_value
-  | simple_value (nary_op simple_value)+
+  | simple_value (nary_op simple_value)*
 
 unary_op ::= '!'
 

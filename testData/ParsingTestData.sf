@@ -18,6 +18,7 @@ actions extends Compound {
     foo IF (val1 > val2) THEN (val1 - val2) ELSE (val2 - val1) FI;
     bar [|"A", "b"|];
     baz 1;
+    quux IF (a) THEN ("1") ELSE ("2") FI;
 }
 
 sfConfig extends Prim {

@@ -373,6 +373,60 @@ FROG_FILE
                           FROG_NUMBER
                             PsiElement(integer)('1')
                 PsiElement(;)(';')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(word)('quux')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_IF_THEN_ELSE
+                        PsiElement(IF)('IF')
+                        PsiWhiteSpace(' ')
+                        FROG_SIMPLE_VALUE
+                          FROG_PARENTHESISED_SIMPLE_VALUE
+                            PsiElement(()('(')
+                            FROG_OPERATOR
+                              FROG_SIMPLE_VALUE
+                                FROG_COMPONENT_REFERENCE
+                                  FROG_COMPONENT_REFERENCE_BASE
+                                    FROG_LINK_REFERENCE
+                                      FROG_REFERENCE_PART
+                                        PsiElement(word)('a')
+                            PsiElement())(')')
+                        PsiWhiteSpace(' ')
+                        PsiElement(THEN)('THEN')
+                        PsiWhiteSpace(' ')
+                        FROG_SIMPLE_VALUE
+                          FROG_PARENTHESISED_SIMPLE_VALUE
+                            PsiElement(()('(')
+                            FROG_OPERATOR
+                              FROG_SIMPLE_VALUE
+                                FROG_BASIC
+                                  FROG_PRIMITIVE
+                                    FROG_STRING
+                                      PsiElement(simple_string)('"1"')
+                            PsiElement())(')')
+                        PsiWhiteSpace(' ')
+                        PsiElement(ELSE)('ELSE')
+                        PsiWhiteSpace(' ')
+                        FROG_SIMPLE_VALUE
+                          FROG_PARENTHESISED_SIMPLE_VALUE
+                            PsiElement(()('(')
+                            FROG_OPERATOR
+                              FROG_SIMPLE_VALUE
+                                FROG_BASIC
+                                  FROG_PRIMITIVE
+                                    FROG_STRING
+                                      PsiElement(simple_string)('"2"')
+                            PsiElement())(')')
+                        PsiWhiteSpace(' ')
+                        PsiElement(FI)('FI')
+                PsiElement(;)(';')
               PsiWhiteSpace('\n')
               PsiElement(})('}')
     PsiWhiteSpace('\n')
