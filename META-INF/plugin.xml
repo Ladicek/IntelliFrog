@@ -1,4 +1,4 @@
-<idea-plugin version="2" url="https://github.com/Ladicek/intellifrog">
+<idea-plugin version="2" url="https://github.com/Ladicek/IntelliFrog">
     <id>cz.ladicek.intellifrog</id>
     <version>0.2-dev</version>
     <vendor email="ladicek@gmail.com" url="http://ladicek.github.com/">Ladislav Thon</vendor>
