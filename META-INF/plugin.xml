@@ -9,6 +9,15 @@
     <description>SmartFrog Plugin for IntelliJ IDEA</description>
     <change-notes>
         <![CDATA[
+            <p>0.2</p>
+
+            <ul>
+            <li>small parsing issue fix</li>
+            <li>structure view</li>
+            <li>highlighting known attributes</li>
+            <li>navigate to component class</li>
+            </ul>
+
             <p>0.1</p>
 
             <ul>
