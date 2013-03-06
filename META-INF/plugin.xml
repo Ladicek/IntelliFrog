@@ -31,6 +31,8 @@
         <lang.psiStructureViewFactory language="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogStructureViewFactory"/>
         <completion.contributor language="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogKeywordsCompletionContributor"/>
         <itemPresentationProvider forClass="cz.ladicek.intellifrog.psi.FrogAttribute" implementationClass="cz.ladicek.intellifrog.editor.FrogAttributePresentationProvider"/>
+        <codeInsight.lineMarkerProvider language="Frog" implementationClass="cz.ladicek.intellifrog.editor.SfClassLineMarkerProvider"/>
+        <annotator language="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogKnownAttributesAnnotator"/>
     </extensions>
 
     <actions>
