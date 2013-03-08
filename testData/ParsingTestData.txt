@@ -427,6 +427,22 @@ FROG_FILE
                         PsiWhiteSpace(' ')
                         PsiElement(FI)('FI')
                 PsiElement(;)(';')
+                PsiWhiteSpace('\n')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                PsiWhiteSpace(' ')
+                FROG_ATTRIBUTE
+                  FROG_ATTR_NAME
+                    PsiElement(word)('corge')
+                  PsiWhiteSpace(' ')
+                  FROG_ATTR_VALUE
+                    FROG_SIMPLE_VALUE
+                      FROG_BASIC
+                        FROG_VECTOR
+                          PsiElement([)('[')
+                          PsiElement(])(']')
+                PsiElement(;)(';')
               PsiWhiteSpace('\n')
               PsiElement(})('}')
     PsiWhiteSpace('\n')

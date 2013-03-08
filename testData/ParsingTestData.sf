@@ -19,6 +19,7 @@ actions extends Compound {
     bar [|"A", "b"|];
     baz 1;
     quux IF (a) THEN ("1") ELSE ("2") FI;
+    corge [];
 }
 
 sfConfig extends Prim {

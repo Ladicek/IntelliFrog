@@ -178,9 +178,9 @@ primitive ::= 'NULL'
   | 'TBD'
   | var_decl
 
-vector ::= '[' simple_value (',' simple_value)* ']' { pin = 1 }
+vector ::= '[' ( simple_value (',' simple_value)* )? ']' { pin = 1 }
 
-primitive_vector ::= '[|' primitive (',' primitive)* '|]' { pin = 1 }
+primitive_vector ::= '[|' ( primitive (',' primitive)* )? '|]' { pin = 1 }
 
 number ::= integer
   | long
