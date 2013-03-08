@@ -34,6 +34,6 @@ public class FrogFileType extends LanguageFileType {
     @Nullable
     @Override
     public Icon getIcon() {
-        return FrogIcons.FROG;
+        return FrogIcons.FILE;
     }
 }

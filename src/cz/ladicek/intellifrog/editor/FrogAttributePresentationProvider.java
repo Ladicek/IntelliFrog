@@ -2,7 +2,7 @@ package cz.ladicek.intellifrog.editor;
 
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.navigation.ItemPresentationProvider;
-import com.intellij.util.PlatformIcons;
+import cz.ladicek.intellifrog.FrogIcons;
 import cz.ladicek.intellifrog.psi.FrogAttribute;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,7 +27,7 @@ public class FrogAttributePresentationProvider implements ItemPresentationProvid
             @Nullable
             @Override
             public Icon getIcon(boolean unused) {
-                return PlatformIcons.ANONYMOUS_CLASS_ICON;
+                return FrogIcons.ATTRIBUTE;
             }
         };
     }

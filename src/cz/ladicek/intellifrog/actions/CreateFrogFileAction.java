@@ -9,7 +9,7 @@ public class CreateFrogFileAction extends CreateFileAction {
     private static final String NEW_FROG_FILE = "New SmartFrog File";
 
     public CreateFrogFileAction() {
-        super(NEW_FROG_FILE, NEW_FROG_FILE, FrogIcons.FROG);
+        super(NEW_FROG_FILE, NEW_FROG_FILE, FrogIcons.FILE);
     }
 
     @Override
