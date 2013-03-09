@@ -13,6 +13,7 @@ import com.intellij.util.PlatformIcons;
 import com.intellij.util.containers.ContainerUtil;
 import cz.ladicek.intellifrog.psi.FrogAttribute;
 import cz.ladicek.intellifrog.psi.FrogString;
+import cz.ladicek.intellifrog.psi.SmartFrog;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -32,18 +33,9 @@ public class SfClassLineMarkerProvider extends RelatedItemLineMarkerProvider {
 
                 Collection<FrogString> strings = PsiTreeUtil.findChildrenOfType(attribute.getAttrValue(), FrogString.class);
                 for (FrogString string : strings) {
-                    String stringValue = null;
-                    if (string.getSimpleString() != null) {
-                        stringValue = string.getSimpleString().getText()
-                                .replaceFirst("^\"", "").replaceFirst("\"$", "");
-                    } else if (string.getMultilineString() != null) {
-                        stringValue = string.getMultilineString().getText()
-                                .replaceFirst("^##", "").replaceFirst("#$", "");
-                    }
-                    if (stringValue != null) {
-                        PsiClass[] classesForString = javaPsiFacade.findClasses(stringValue, globalScope);
-                        ContainerUtil.addAll(allFoundClasses, classesForString);
-                    }
+                    String stringValue = SmartFrog.value(string);
+                    PsiClass[] classesForString = javaPsiFacade.findClasses(stringValue, globalScope);
+                    ContainerUtil.addAll(allFoundClasses, classesForString);
                 }
 
                 if (!allFoundClasses.isEmpty()) {
