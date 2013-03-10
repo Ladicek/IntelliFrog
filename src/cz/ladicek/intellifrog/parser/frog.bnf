@@ -113,7 +113,7 @@ component ::= 'extends' (':' word)? ('DATA' | 'LAZY')? ('NULL' | link_reference 
 
 component_attributes ::= '{' attribute_list '}'
 
-component_rest ::= (',' ('NULL' | link_reference | component_attributes ) )+
+component_rest ::= (',' ('NULL' | link_reference | component_attributes ) )+ component_attributes?
   | component_attributes
 
 link_reference ::= reference_part (':' reference_part)*
