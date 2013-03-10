@@ -16,13 +16,13 @@ public class FrogFileType extends LanguageFileType {
     @NotNull
     @Override
     public String getName() {
-        return "SmartFrog";
+        return "Frog";
     }
 
     @NotNull
     @Override
     public String getDescription() {
-        return "SmartFrog Language";
+        return "SmartFrog";
     }
 
     @NotNull
