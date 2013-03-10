@@ -1,5 +1,6 @@
 package cz.ladicek.intellifrog.psi;
 
+import com.intellij.openapi.util.TextRange;
 import org.jetbrains.annotations.NotNull;
 
 public class SmartFrog {
@@ -15,11 +16,12 @@ public class SmartFrog {
         }
     }
 
-    public static int offsetOfValue(@NotNull FrogString string) {
+    @NotNull
+    public static TextRange textRange(@NotNull FrogString string) {
         if (string.getSimpleString() != null) {
-            return 1;
+            return TextRange.from(1, string.getTextLength() - 2);
         } else if (string.getMultilineString() != null) {
-            return 2;
+            return TextRange.from(2, string.getTextLength() - 3);
         } else {
             throw new IllegalStateException("string is always either simple_string or multiline_string");
         }
