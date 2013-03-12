@@ -9,6 +9,15 @@
     <description>SmartFrog Plugin for IntelliJ IDEA</description>
     <change-notes>
         <![CDATA[
+            <p>0.3</p>
+
+            <ul>
+            <li>two small parsing issue fixes</li>
+            <li>navigate to Java class from arbitrary string</li>
+            <li>navigate to SmartFrog script from #include</li>
+            <li>completion of SmartFrog scripts inside #include</li>
+            </ul>
+
             <p>0.2</p>
 
             <ul>
