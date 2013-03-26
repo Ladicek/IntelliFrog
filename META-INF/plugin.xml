@@ -48,8 +48,9 @@
         <lang.syntaxHighlighterFactory key="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogSyntaxHighlighterFactory"/>
         <lang.psiStructureViewFactory language="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogStructureViewFactory"/>
         <quoteHandler fileType="Frog" className="cz.ladicek.intellifrog.editor.FrogQuoteHandler"/>
-        <psi.referenceContributor language="Frog" implementation="cz.ladicek.intellifrog.psi.impl.FrogStringReferenceContributor"/>
+        <psi.referenceContributor language="Frog" implementation="cz.ladicek.intellifrog.psi.impl.FrogReferenceContributor"/>
         <completion.contributor language="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogKeywordsCompletionContributor"/>
+        <elementDescriptionProvider implementation="cz.ladicek.intellifrog.psi.impl.FrogElementDescriptionProvider"/>
         <itemPresentationProvider forClass="cz.ladicek.intellifrog.psi.FrogAttribute" implementationClass="cz.ladicek.intellifrog.editor.FrogAttributePresentationProvider"/>
         <codeInsight.lineMarkerProvider language="Frog" implementationClass="cz.ladicek.intellifrog.editor.SfClassLineMarkerProvider"/>
         <annotator language="Frog" implementationClass="cz.ladicek.intellifrog.editor.FrogKnownAttributesAnnotator"/>

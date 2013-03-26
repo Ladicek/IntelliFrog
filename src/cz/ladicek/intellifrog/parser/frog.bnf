@@ -86,6 +86,12 @@
   OP_XOR              = "x|"
   OP_NOT              = "!"
   OP_IMPLIES          = "->"
+
+  implements("attribute") = "cz.ladicek.intellifrog.psi.FrogNamedElement"
+  extends("attribute") = "cz.ladicek.intellifrog.psi.impl.FrogNamedElementImpl"
+  methods("attribute") = [getNameIdentifier processDeclarations]
+  methods("attribute_list") = [processDeclarations]
+  methods("includes") = [processDeclarations]
 }
 
 root ::= attribute_list

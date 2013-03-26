@@ -1,9 +1,11 @@
 package cz.ladicek.intellifrog.psi.impl;
 
 import com.intellij.extapi.psi.PsiFileBase;
-import com.intellij.lang.Language;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.psi.FileViewProvider;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.ResolveState;
+import com.intellij.psi.scope.PsiScopeProcessor;
 import cz.ladicek.intellifrog.FrogFileType;
 import cz.ladicek.intellifrog.FrogLanguage;
 import cz.ladicek.intellifrog.psi.FrogFile;
