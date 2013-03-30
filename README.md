@@ -5,6 +5,14 @@ for [IntelliJ IDEA](http://www.jetbrains.com/idea/)
 
 ## Changelog
 
+0.4
+
+- code navigation
+- code completion
+- find usages
+- rename refactoring
+- safe delete
+
 0.3
 
 - two small parsing issue fixes

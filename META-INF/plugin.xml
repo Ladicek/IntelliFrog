@@ -9,6 +9,16 @@
     <description>SmartFrog Plugin for IntelliJ IDEA</description>
     <change-notes>
         <![CDATA[
+            <p>0.4</p>
+
+            <ul>
+            <li>code navigation</li>
+            <li>code completion</li>
+            <li>find usages</li>
+            <li>rename refactoring</li>
+            <li>safe delete</li>
+            </ul>
+
             <p>0.3</p>
 
             <ul>
