@@ -7,8 +7,10 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReferenceBase;
 import com.intellij.psi.ResolveState;
 import com.intellij.util.ArrayUtil;
+import com.intellij.util.IncorrectOperationException;
 import com.intellij.util.containers.ContainerUtil;
 import cz.ladicek.intellifrog.FrogIcons;
+import cz.ladicek.intellifrog.psi.FrogElementFactory;
 import cz.ladicek.intellifrog.psi.FrogLinkReference;
 import cz.ladicek.intellifrog.psi.FrogNamedElement;
 import org.jetbrains.annotations.NotNull;
@@ -61,5 +63,16 @@ public class FrogAttributeReferenceImpl extends PsiReferenceBase<FrogLinkReferen
         return LookupElementBuilder.create(element)
                 .withIcon(FrogIcons.ATTRIBUTE)
                 .withTypeText(element.getContainingFile().getName(), true);
+    }
+
+    @Override
+    public PsiElement handleElementRename(String newName) throws IncorrectOperationException {
+        FrogLinkReference newLinkReference = FrogElementFactory.createLinkReference(myElement.getProject(), newName);
+        if (newLinkReference == null) {
+            throw new IncorrectOperationException("Can't rename to '" + newName + "'");
+        }
+
+        myElement.getNode().getTreeParent().replaceChild(myElement.getNode(), newLinkReference.getNode());
+        return myElement;
     }
 }

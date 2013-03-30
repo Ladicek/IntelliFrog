@@ -6,7 +6,9 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.ResolveState;
 import com.intellij.psi.scope.PsiScopeProcessor;
 import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.util.IncorrectOperationException;
 import cz.ladicek.intellifrog.psi.*;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -30,6 +32,21 @@ public class FrogPsiImplUtil {
         }
 
         return true;
+    }
+
+    public static PsiElement setName(@NotNull FrogAttribute attribute, @NonNls @NotNull String name) throws IncorrectOperationException {
+        FrogAttrName attrName = attribute.getAttrName();
+        if (attrName.getWord() == null || attrName.getString() != null || attrName.getAttrName() != null) {
+            throw new IncorrectOperationException("Rename not supported for compound names");
+        }
+
+        FrogAttrName newAttrName = FrogElementFactory.createAttrName(attribute.getProject(), name);
+        if (newAttrName == null) {
+            throw new IncorrectOperationException("Can't rename to '" + name + "'");
+        }
+
+        attribute.getNode().replaceChild(attrName.getNode(), newAttrName.getNode());
+        return attribute;
     }
 
     public static boolean processDeclarations(@NotNull FrogAttributeList attributeList,
