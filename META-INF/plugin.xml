@@ -1,6 +1,6 @@
 <idea-plugin version="2" url="https://github.com/Ladicek/IntelliFrog">
     <id>cz.ladicek.intellifrog</id>
-    <version>0.4-dev</version>
+    <version>0.4</version>
     <vendor email="ladicek@gmail.com" url="http://ladicek.github.com/">Ladislav Thon</vendor>
     <idea-version since-build="123.72"/>
     <depends>com.intellij.modules.lang</depends>
