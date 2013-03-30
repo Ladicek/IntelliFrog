@@ -1,12 +1,17 @@
 package cz.ladicek.intellifrog.psi.impl;
 
+import com.intellij.extapi.psi.ASTDelegatePsiElement;
+import com.intellij.lang.ASTNode;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.ResolveState;
+import com.intellij.psi.impl.CheckUtil;
+import com.intellij.psi.impl.source.codeStyle.CodeEditUtil;
 import com.intellij.psi.scope.PsiScopeProcessor;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.IncorrectOperationException;
+import cz.ladicek.intellifrog.parser.FrogTypes;
 import cz.ladicek.intellifrog.psi.*;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -47,6 +52,23 @@ public class FrogPsiImplUtil {
 
         attribute.getNode().replaceChild(attrName.getNode(), newAttrName.getNode());
         return attribute;
+    }
+
+    public static void delete(@NotNull FrogAttribute attribute) throws IncorrectOperationException {
+        // see ASTDelegatePsiElement.delete
+        PsiElement parent = attribute.getParent();
+        if (parent instanceof ASTDelegatePsiElement) {
+            CheckUtil.checkWritable(attribute);
+
+            ASTNode node = attribute.getNode();
+            ASTNode nextNode = node.getTreeNext();
+            ((ASTDelegatePsiElement) parent).deleteChildInternal(node);
+            if (nextNode != null && nextNode.getElementType() == FrogTypes.FROG_SEMICOLON) {
+                parent.getNode().removeChild(nextNode);
+            }
+        } else {
+            throw new UnsupportedOperationException(attribute.getClass().getName() + " under " + (parent == null ? "null" : parent.getClass().getName()));
+        }
     }
 
     public static boolean processDeclarations(@NotNull FrogAttributeList attributeList,

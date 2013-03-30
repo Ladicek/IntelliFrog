@@ -89,7 +89,7 @@
 
   implements("attribute") = "cz.ladicek.intellifrog.psi.FrogNamedElement"
   extends("attribute") = "cz.ladicek.intellifrog.psi.impl.FrogNamedElementImpl"
-  methods("attribute") = [getNameIdentifier processDeclarations setName]
+  methods("attribute") = [getNameIdentifier processDeclarations setName delete]
   methods("attribute_list") = [processDeclarations]
   methods("includes") = [processDeclarations]
 }
